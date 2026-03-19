@@ -603,11 +603,19 @@ Professional systems often include:
 
 ---
 
-# Reflection Questions
+## Week 4 Reflection
 
-Answer the following:
+1. What did you learn?
+I learned how to handle exceptions in Java using try-catch, custom exceptions, and validation.
 
-1. What is the difference between checked and unchecked exceptions?
-2. When should you create a custom exception?
-3. Why is exception translation useful in layered systems?
-4. How can the Observer pattern improve error reporting?
+2. What challenges did you face?
+Understanding how exceptions propagate and debugging compilation errors was challenging.
+
+3. How did you solve them?
+I used Maven output errors and fixed issues step by step, especially class naming and enum problems.
+
+4. What is exception translation?
+Exception translation is converting low-level exceptions into meaningful application-level exceptions.
+
+5. What did you learn from JUnit tests?
+I learned how to test exceptions using assertThrows and assertDoesNotThrow.
