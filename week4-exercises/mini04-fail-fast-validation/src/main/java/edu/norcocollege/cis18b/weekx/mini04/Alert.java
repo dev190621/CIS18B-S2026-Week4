@@ -1,9 +1,9 @@
 package edu.norcocollege.cis18b.weekx.mini04;
 
 public class Alert {
-    private final int id;
-    private final String message;
-    private final AlertLevel level;
+    private int id;
+    private String message;
+    private AlertLevel level;
 
     public Alert(int id, String message, AlertLevel level) {
         this.id = id;
@@ -11,7 +11,15 @@ public class Alert {
         this.level = level;
     }
 
-    public int getId() { return id; }
-    public String getMessage() { return message; }
-    public AlertLevel getLevel() { return level; }
+    public int getId() {
+        return id;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public AlertLevel getLevel() {
+        return level;
+    }
 }

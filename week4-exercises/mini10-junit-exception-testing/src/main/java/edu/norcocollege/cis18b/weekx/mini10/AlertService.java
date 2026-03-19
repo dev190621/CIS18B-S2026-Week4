@@ -2,17 +2,13 @@ package edu.norcocollege.cis18b.weekx.mini10;
 
 public class AlertService {
     private final AlertRepository repository;
-    private final AlertValidator validator = new AlertValidator();
 
     public AlertService(AlertRepository repository) {
         this.repository = repository;
     }
 
     public void processAlert(Alert alert) throws InvalidAlertException, AlertStorageException {
-        // TODO: Validate the alert, then save it.
-    }
-
-    public int getAlertCount() {
-        return repository.findAll().size();
+        AlertValidator.validate(alert);
+        repository.save(alert);
     }
 }

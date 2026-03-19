@@ -2,12 +2,21 @@ package edu.norcocollege.cis18b.weekx.mini04;
 
 public class AlertValidationApp {
     public static void main(String[] args) {
-        AlertValidator validator = new AlertValidator();
-
-        Alert validAlert = new Alert(1, "CPU usage high", AlertLevel.WARNING);
+        Alert validAlert = new Alert(1, "CPU usage high", AlertLevel.HIGH);
         Alert invalidAlert = new Alert(2, "   ", null);
 
-        // TODO: Validate the valid alert and print a success message.
-        // TODO: Validate the invalid alert and print the exception message.
+        try {
+            AlertValidator.validate(validAlert);
+            System.out.println("Valid alert passed validation.");
+        } catch (InvalidAlertException e) {
+            System.out.println("Valid alert failed: " + e.getMessage());
+        }
+
+        try {
+            AlertValidator.validate(invalidAlert);
+            System.out.println("Invalid alert passed validation.");
+        } catch (InvalidAlertException e) {
+            System.out.println("Invalid alert rejected: " + e.getMessage());
+        }
     }
 }

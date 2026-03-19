@@ -2,26 +2,56 @@ package edu.norcocollege.cis18b.weekx.mini10;
 
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class AlertServiceTest {
-    @Test
-    void shouldStoreSuccessfullyProcessedAlert() throws Exception {
-        AlertService service = new AlertService(new InMemoryAlertRepository());
-        Alert alert = new Alert(1, "Unauthorized login attempt", AlertLevel.CRITICAL);
 
-        // TODO: Process the alert.
-        // TODO: Assert that one alert was stored.
-        assertEquals(1, 0);
+    @Test
+    void validAlertDoesNotThrow() {
+        InMemoryAlertRepository repository = new InMemoryAlertRepository();
+        AlertService service = new AlertService(repository);
+        Alert alert = new Alert(1, "CPU spike detected", AlertLevel.HIGH);
+
+        assertDoesNotThrow(() -> service.processAlert(alert));
     }
 
     @Test
-    void shouldThrowWhenRepositoryFails() {
-        AlertService service = new AlertService(new AlwaysFailRepository());
-        Alert alert = new Alert(2, "Disk failure", AlertLevel.CRITICAL);
+    void blankMessageThrowsInvalidAlertException() {
+        InMemoryAlertRepository repository = new InMemoryAlertRepository();
+        AlertService service = new AlertService(repository);
+        Alert alert = new Alert(1, "   ", AlertLevel.HIGH);
 
-        // TODO: Replace null with a lambda that calls processAlert(alert).
-        assertThrows(AlertStorageException.class, null);
+        assertThrows(InvalidAlertException.class, () -> service.processAlert(alert));
+    }
+
+    @Test
+    void nullLevelThrowsInvalidAlertException() {
+        InMemoryAlertRepository repository = new InMemoryAlertRepository();
+        AlertService service = new AlertService(repository);
+        Alert alert = new Alert(1, "Memory warning", null);
+
+        assertThrows(InvalidAlertException.class, () -> service.processAlert(alert));
+    }
+
+    @Test
+    void successfulAlertIsStored() throws Exception {
+        InMemoryAlertRepository repository = new InMemoryAlertRepository();
+        AlertService service = new AlertService(repository);
+        Alert alert = new Alert(1, "Disk space low", AlertLevel.MEDIUM);
+
+        service.processAlert(alert);
+
+        assertEquals(1, repository.getStoredAlerts().size());
+        assertEquals("Disk space low", repository.getStoredAlerts().get(0).getMessage());
+    }
+
+    @Test
+    void failingRepositoryCausesAlertStorageException() {
+        AlertService service = new AlertService(new FailingAlertRepository());
+        Alert alert = new Alert(1, "Network timeout", AlertLevel.HIGH);
+
+        assertThrows(AlertStorageException.class, () -> service.processAlert(alert));
     }
 }

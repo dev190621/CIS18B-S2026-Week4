@@ -4,15 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InMemoryAlertRepository implements AlertRepository {
-    private final List<Alert> alerts = new ArrayList<>();
+    private final List<Alert> storedAlerts = new ArrayList<>();
 
     @Override
     public void save(Alert alert) throws AlertStorageException {
-        // TODO: Save the alert to the list.
+        storedAlerts.add(alert);
     }
 
-    @Override
-    public List<Alert> findAll() {
-        return new ArrayList<>(alerts);
+    public List<Alert> getStoredAlerts() {
+        return storedAlerts;
     }
 }

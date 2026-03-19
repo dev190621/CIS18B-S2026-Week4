@@ -2,17 +2,21 @@ package edu.norcocollege.cis18b.weekx.mini07;
 
 public class AlertService {
     private final AlertRepository repository;
-    private final AlertValidator validator;
 
     public AlertService(AlertRepository repository) {
         this.repository = repository;
-        this.validator = new AlertValidator();
     }
 
     public void processAlert(Alert alert)
             throws InvalidAlertException, AlertStorageException, AlertProcessingException {
-        // TODO: Validate the alert.
-        // TODO: Save the alert.
-        // TODO: Wrap unexpected errors in AlertProcessingException.
+        try {
+            AlertValidator.validate(alert);
+            repository.save(alert);
+            System.out.println("Alert processed successfully.");
+        } catch (InvalidAlertException | AlertStorageException e) {
+            throw e;
+        } catch (Exception e) {
+            throw new AlertProcessingException("Unexpected processing error.", e);
+        }
     }
 }

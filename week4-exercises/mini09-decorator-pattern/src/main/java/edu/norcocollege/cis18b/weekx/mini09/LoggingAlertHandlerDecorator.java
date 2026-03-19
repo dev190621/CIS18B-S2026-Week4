@@ -1,16 +1,16 @@
 package edu.norcocollege.cis18b.weekx.mini09;
 
 public class LoggingAlertHandlerDecorator implements AlertHandler {
-    private final AlertHandler wrapped;
+    private final AlertHandler wrappedHandler;
 
-    public LoggingAlertHandlerDecorator(AlertHandler wrapped) {
-        this.wrapped = wrapped;
+    public LoggingAlertHandlerDecorator(AlertHandler wrappedHandler) {
+        this.wrappedHandler = wrappedHandler;
     }
 
     @Override
     public void handle(Alert alert) {
-        // TODO: Print a message before delegating.
-        // TODO: Call the wrapped handler.
-        // TODO: Print a message after delegating.
+        System.out.println("LOG: Starting alert handling...");
+        wrappedHandler.handle(alert);
+        System.out.println("LOG: Finished alert handling...");
     }
 }

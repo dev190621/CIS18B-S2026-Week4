@@ -2,14 +2,13 @@ package edu.norcocollege.cis18b.weekx.mini02;
 
 public class FinallyDemo {
     public static void main(String[] args) {
-        // TODO: Print "Opening alert stream..."
-
         try {
-            // TODO: Intentionally throw a RuntimeException with a helpful message.
-        } catch (RuntimeException ex) {
-            // TODO: Print the error message in a friendly format.
+            System.out.println("Opening alert stream...");
+            throw new RuntimeException("Simulated alert stream failure");
+        } catch (RuntimeException e) {
+            System.out.println("Caught exception: " + e.getMessage());
         } finally {
-            // TODO: Print "Closing alert stream..."
+            System.out.println("Closing alert stream...");
         }
     }
 }
