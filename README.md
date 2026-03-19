@@ -608,6 +608,10 @@ Professional systems often include:
 Answer the following:
 
 1. What is the difference between checked and unchecked exceptions?
+   Checked exceptions must be either caught or declared with throws. The compiler checks them. Unchecked exceptions are runtime exceptions and do not need to be explicitly handled.
 2. When should you create a custom exception?
+   You should create a custom exception when you want to represent a specific domain problem clearly, such as invalid alert data or alert storage failure.
 3. Why is exception translation useful in layered systems?
+   Exception translation hides low-level technical details and replaces them with meaningful exceptions that make sense at higher layers of the application.
 4. How can the Observer pattern improve error reporting?
+   Exception translation hides low-level technical details and replaces them with meaningful exceptions that make sense at higher layers of the application.
