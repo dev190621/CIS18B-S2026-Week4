@@ -1,1 +1,15 @@
-TODO: Replace this text with your debugging notes.
+Mini05 – Debugging Lab
+
+Issue Identified
+The program had logical and runtime errors, including incorrect calculations and improper exception handling.
+
+Error Observed
+The code produced incorrect output and in some cases could crash due to unhandled exceptions.
+
+Fix Applied
+- Corrected the logic in the calculations
+- Added proper exception handling using try-catch blocks
+- Ensured valid input handling to prevent runtime errors
+
+What I Learned
+I learned how to debug Java programs by identifying errors, reading stack traces, and fixing both logical and runtime issues effectively.
