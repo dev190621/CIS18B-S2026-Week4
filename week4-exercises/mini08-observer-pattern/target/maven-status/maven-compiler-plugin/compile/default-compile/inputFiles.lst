@@ -1,7 +1,0 @@
-/workspaces/CIS18B-S2026-Week4/week4-exercises/mini08-observer-pattern/src/main/java/edu/norcocollege/cis18b/weekx/mini08/ObserverApp.java
-/workspaces/CIS18B-S2026-Week4/week4-exercises/mini08-observer-pattern/src/main/java/edu/norcocollege/cis18b/weekx/mini08/AlertService.java
-/workspaces/CIS18B-S2026-Week4/week4-exercises/mini08-observer-pattern/src/main/java/edu/norcocollege/cis18b/weekx/mini08/Alert.java
-/workspaces/CIS18B-S2026-Week4/week4-exercises/mini08-observer-pattern/src/main/java/edu/norcocollege/cis18b/weekx/mini08/EmailAlertObserver.java
-/workspaces/CIS18B-S2026-Week4/week4-exercises/mini08-observer-pattern/src/main/java/edu/norcocollege/cis18b/weekx/mini08/LogAlertObserver.java
-/workspaces/CIS18B-S2026-Week4/week4-exercises/mini08-observer-pattern/src/main/java/edu/norcocollege/cis18b/weekx/mini08/AlertLevel.java
-/workspaces/CIS18B-S2026-Week4/week4-exercises/mini08-observer-pattern/src/main/java/edu/norcocollege/cis18b/weekx/mini08/AlertObserver.java
